@@ -1,19 +1,19 @@
 USE ROLE accountadmin;
 
-CREATE OR REPLACE WAREHOUSE tasty_bytes_dbt_wh
-    WAREHOUSE_SIZE = 'small'
-    WAREHOUSE_TYPE = 'standard'
-    AUTO_SUSPEND = 60
-    AUTO_RESUME = TRUE
-    INITIALLY_SUSPENDED = TRUE
-    COMMENT = 'warehouse for tasty bytes dbt demo';
+-- CREATE OR REPLACE WAREHOUSE tasty_bytes_dbt_wh
+--     WAREHOUSE_SIZE = 'small'
+--     WAREHOUSE_TYPE = 'standard'
+--     AUTO_SUSPEND = 60
+--     AUTO_RESUME = TRUE
+--     INITIALLY_SUSPENDED = TRUE
+--     COMMENT = 'warehouse for tasty bytes dbt demo';
 
-USE WAREHOUSE tasty_bytes_dbt_wh;
+-- USE WAREHOUSE tasty_bytes_dbt_wh;
 
-CREATE DATABASE IF NOT EXISTS tasty_bytes_dbt_db;
+-- CREATE DATABASE IF NOT EXISTS tasty_bytes_dbt_db;
 CREATE OR REPLACE SCHEMA tasty_bytes_dbt_db.raw;
-CREATE OR REPLACE SCHEMA tasty_bytes_dbt_db.dev;
-CREATE OR REPLACE SCHEMA tasty_bytes_dbt_db.prod;
+-- CREATE OR REPLACE SCHEMA tasty_bytes_dbt_db.dev;
+-- CREATE OR REPLACE SCHEMA tasty_bytes_dbt_db.prod;
 
 
 ALTER SCHEMA tasty_bytes_dbt_db.dev SET LOG_LEVEL = 'INFO';
@@ -23,6 +23,8 @@ ALTER SCHEMA tasty_bytes_dbt_db.dev SET METRIC_LEVEL = 'ALL';
 ALTER SCHEMA tasty_bytes_dbt_db.prod SET LOG_LEVEL = 'INFO';
 ALTER SCHEMA tasty_bytes_dbt_db.prod SET TRACE_LEVEL = 'ALWAYS';
 ALTER SCHEMA tasty_bytes_dbt_db.prod SET METRIC_LEVEL = 'ALL';
+
+show integrations
 
 CREATE OR REPLACE API INTEGRATION git_integration
   API_PROVIDER = git_https_api
